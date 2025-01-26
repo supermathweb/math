@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e8f5e9; /* Light green background */
+}
+
+/* General screen setup */
+.screen {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* General styles for nav */
+nav {
+    width: 15%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 40px 0;
+    background: #ffffff; /* White background for nav */
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    border-right: 1px solid #e0e0e0; /* Light border to define the nav */
+}
+
+/* Styling for each div inside nav */
+nav > div {
+    width: 90%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+nav > div:hover {
+    background-color: #c8e6c9; /* Soft green hover effect */
+    transform: translateX(5px);
+}
+
+nav img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+nav .logo-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #388e3c; /* Dark green text */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1400px) {
+    nav {
+        width: 12%;
+    }
+
+    nav .logo-title {
+        display: none;
+    }
+
+    nav img {
+        margin-right: 0;
+    }
+
+    nav > div {
+        justify-content: center;
+    }
+}
+
+/* Mid-section */
+.mid-section {
+    flex: 1;
+    padding: 30px;
+    background-color: #ffffff; /* White background for the center */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    margin: 20px;
+    overflow-y: auto;
+}
+
+/* Right section */
+.right-section {
+    width: 20%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-left: 1px solid #e0e0e0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Styling for unit line */
+.unit-line {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.unit-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #388e3c; /* Dark green color */
+}
+
+.unit-name::before,
+.unit-name::after {
+    content: "";
+    flex: 1;
+    border-top: 2px solid #c8e6c9; /* Light green border */
+    margin: 0 20px;
+}
+
+.unit-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+}
+
+/* Level button styles */
+.level-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.level-btn.lock-level::before {
+    content: "🔒";
+}
+
+.level-btn.unlock-level::before {
+    content: "✓";
+}
+
+.level-btn.lock-level {
+    background-color: rgb(220, 220, 220);
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.level-btn.unlock-level {
+    background-color: rgb(0, 180, 120);
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.level-btn:hover {
+    transform: scale(1.1);
+}
+
+.level:nth-child(odd) {
+    margin-left: -50px;
+}
+
+.level:nth-child(even) {
+    margin-left: 50px;
+}
+
+/* Intro level */
+.intro-level {
+    position: absolute;
+    right: 30%;
+    background-color: #f1f8e9; /* Light green background */
+    padding: 20px 25px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    min-width: 320px;
+    transition: transform 0.3s ease;
+}
+
+.intro-level.show {
+    display: flex;
+    transform: translateY(-50%) scale(1);
+}
+
+/* Start button */
+.start-btn {
+    background-color: #ffffff;
+    color: #388e3c; /* Dark green text */
+    width: 80%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 15px;
+    border: 1px solid #c8e6c9; /* Light green border */
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.start-btn:hover {
+    background-color: #c8e6c9; /* Soft green hover effect */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Additional styling for intro text */
+.level-name {
+    color: #388e3c; /* Dark green for consistency */
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section h1 {
+    color: rgb(34, 139, 230); /* Xanh dương nhã nhặn */
+    font-size: 25px;
+    text-align: center;
+}
+
+.identity {
+    background-color: rgba(52, 152, 219, 0.8); /* Màu xanh biển trong suốt */
+    width: 100%;
+    height: inherit;
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 8px; /* Thêm bo góc mềm mại */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng nhẹ */
+    margin-top: 30px;
+    text-align: center; /* Căn giữa nội dung */
+}
