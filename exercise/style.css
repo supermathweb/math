@@ -36,8 +36,8 @@ body {
     left: 50px;
     top: 50%;
     transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     border-radius: 50%;
     display: flex;

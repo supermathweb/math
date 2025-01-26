@@ -473,3 +473,22 @@ body {
 .cancel-exam .double-btn .submit:hover {
     background-color: #ff4040;
 }
+
+@media (max-width: 500px) {
+    .submit-btn {
+        position: fixed;
+        width: 80px;
+        height: 50px;
+        padding: 5px;
+        background-color: rgb(0, 106, 114);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}

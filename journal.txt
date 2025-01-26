@@ -3,3 +3,4 @@
 - Bắt đầu lập trình exercise-trắc nghiệm từ tối ngày 22-1-2025
 - Bắt đầu lập trình exercise-tự luận từ sáng ngày 25-1
 - Xong hết hình thức của exercise vào tối ngày 25-1
+- Chính thức lập trình xong web vào sáng ngày 26-1-2025
