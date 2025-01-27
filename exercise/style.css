@@ -64,7 +64,7 @@ h1 {
     text-align: center;
 }
 
-.rules-container {
+.rules-container, .history-exam {
     width: 90%;
     max-width: 800px;
     background: #ffffff;
@@ -75,7 +75,7 @@ h1 {
     text-align: left;
 }
 
-.rules-container h1 {
+.rules-container h1, .history-exam h1 {
     font-size: 2.5rem;
     text-align: center;
     color: #2980b9;
@@ -173,4 +173,57 @@ h1 {
     .time-input-group label {
         margin-bottom: 10px;
     }
+}
+
+.exam-container {
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(230, 230, 230);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.exam-container:nth-child(odd) {
+    background-color: rgb(240, 240, 240);
+}
+
+.exam-name {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.delete-exam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.access-exam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    width: 80%;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.empty-list {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
 }

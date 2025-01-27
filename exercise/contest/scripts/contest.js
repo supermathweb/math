@@ -9,6 +9,8 @@ var userAnswers = {
 
 const plusPoint = [1, 1, 2, 1, 1];
 
+let time = 0, time2 = 0, totalPoint;
+
 var intervalIds = [];
 
 console.log('ok');
@@ -175,12 +177,14 @@ function submitExam() {
 
 
     // Show point
-    const totalPoint = point1 + point2;
+    totalPoint = point1 + point2;
     const maxPoint = 10;
     const pointElement = document.querySelector('.point');
     pointElement.innerHTML = `Điểm ${totalPoint} / ${maxPoint}`;
-}
 
+    // Save history exams
+    saveExam();
+}
 
 function userSelect(question, answer) {
     userAnswers[question] = answer;
@@ -195,8 +199,6 @@ function userSelect(question, answer) {
     var selectedButton = document.querySelector(`.${question}-choices.${answer}`);
     selectedButton.classList.add('selected');
 }
-
-
 
 function createMultipleChoices() {
     console.log('creating questions1');
@@ -255,7 +257,6 @@ function createMultipleChoices() {
     } else {
         console.error('Không tìm thấy phần tử .multiple-choice');
     }
-
 }
 
 function createConstructedResponse() {
@@ -295,12 +296,12 @@ function part1() {
     let numQuestions = 16;
     let questions = [];
     // Lấy hết tất cả các questions
-    for (let i = 5; i <= 20; i++) {
+    for (let i = 1; i <= 20; i++) {
         questions.push(randomTracNghiem(i));
     }
 
     // Xáo trộn và chọn ra 16 câu đầu
-    // questions = [...questions].sort(() => Math.random() - 0.5);
+    questions = [...questions].sort(() => Math.random() - 0.5);
     questions = questions.slice(0, numQuestions);
 
     return questions;
@@ -323,21 +324,21 @@ function setupTime() {
     const params = new URLSearchParams(window.location.search);
 
     // Lấy giá trị của tham số "time"
-    let time = params.get('time');
-    time *= 60;
+    time = params.get('time');
+    time2 = time * 60;
     intervalIds.push(setInterval(() => {
-        time--;
+        time2--;
 
-        if (time === 0) {
+        if (time2 === 0) {
             timeRunOut();
             setTimeout(() => {
-                clearInterval(countDown);
+                clearInterval(time2);
             }, 0);
         }
 
-        const hour = Math.floor(time / 3600);
-        const minute = Math.floor(time / 60) % 60;
-        const second = time % 60;
+        const hour = Math.floor(time2 / 3600);
+        const minute = Math.floor(time2 / 60) % 60;
+        const second = time2 % 60;
         displayTime(hour, minute, second);
     }, 1000));
 
@@ -359,4 +360,37 @@ function displayTime(hour, minute, second) {
     if (hour === '00' && minute === '00') {
         timeELement.classList.add('running-out');
     }
+}
+
+function saveExam() {
+    const part1 = document.querySelector('.multiple-choice');
+    let html1 = part1.innerHTML;
+
+    const part2 = document.querySelector('.constructed-response');
+    let html2 = part2.innerHTML;
+
+    const now = new Date();
+    let h = now.getHours();
+    if (h < 10) h = '0' + h;
+    let m = now.getMinutes();
+    if (m < 10) m = '0' + m;
+    let s = now.getSeconds();
+    if (s < 10) s = '0' + s;
+
+    let day = now.getDate();
+    if (day < 10) day = '0' + day;
+    let month = now.getMonth() + 1;
+    if (month < 10) month = '0' + month;
+    let year = now.getFullYear();
+
+    const exam = {
+        name: `${h}:${m}:${s} - ${day}/${month}/${year}`,
+        point: totalPoint,
+        time: (time * 60 - time2),
+        part1: html1,
+        part2: html2,
+    }
+    let exams = JSON.parse(localStorage.getItem('history_exams'));
+    exams.push(exam);
+    localStorage.setItem('history_exams', JSON.stringify(exams));
 }
