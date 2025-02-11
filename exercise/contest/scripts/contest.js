@@ -89,7 +89,7 @@ function submitExam() {
     turnBack.removeEventListener('click', showCancelExam);
     turnBack.addEventListener('click', () => {
         document.location.href = '../';
-    })
+    });
 
     // Compare answers
     const numQuestions1 = 16;
@@ -391,6 +391,7 @@ function saveExam() {
         part2: html2,
     }
     let exams = JSON.parse(localStorage.getItem('history_exams'));
+    if (exams === null) exams = [];
     exams.push(exam);
     localStorage.setItem('history_exams', JSON.stringify(exams));
 }
