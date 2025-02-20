@@ -172,13 +172,7 @@ function displayQuestion() {
     checkButton.replaceWith(checkButton.cloneNode(true));
     const newCheckButton = document.querySelector('.check-btn');
 
-newCheckButton.style.pointerEvents = 'auto';
-
-
-
-
-
-    
+    newCheckButton.style.pointerEvents = 'auto';
     newCheckButton.addEventListener('click', () => {
         if (!selectedOption) {
             alert("Vui lòng chọn một đáp án!");
@@ -208,14 +202,7 @@ newCheckButton.style.pointerEvents = 'auto';
             option.style.pointerEvents = 'none';
         });
         newCheckButton.style.pointerEvents = 'none';
-
-        
-
-
-
-        
-
-                newCheckButton.style.pointerEvents = "none";
+        newCheckButton.style.pointerEvents = "none";
 
         // Show continue button
         continueButton.classList.remove('hide');
